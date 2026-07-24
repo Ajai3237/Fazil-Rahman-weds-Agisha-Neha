@@ -1919,8 +1919,8 @@
 </script>
 
 <!-- ── Background Music ── -->
-<audio id="bg-music" loop preload="auto">
-  <source src="Asset/LAAL ISHQ (YEH KAALI RAAT JAKAD LOON) RAM LEELA MOVIE   WHATSAPP STATUS  2020 STATUS  GOOD DAY.mp3" type="audio/mpeg">
+<audio id="bg-music" loop playsinline>
+  <source src="Asset/music.mp3" type="audio/mpeg">
 </audio>
 
 <button id="music-btn" title="Toggle Music">♫</button>
@@ -1929,25 +1929,29 @@
   const audio  = document.getElementById('bg-music');
   const btn    = document.getElementById('music-btn');
   const splash = document.getElementById('splash');
-  const enterBtn = document.getElementById('splash-enter');
 
   audio.volume = 0.5;
 
-  function playMusic() {
-    audio.play().then(() => {
-      btn.classList.add('playing');
-      btn.textContent = '♫';
-    }).catch(() => {});
+  function enterSite() {
+    splash.classList.add('hidden');
+    /* iOS requires load() inside the gesture before play() */
+    audio.load();
+    const p = audio.play();
+    if (p !== undefined) {
+      p.then(() => {
+        btn.classList.add('playing');
+        btn.textContent = '♫';
+      }).catch(() => {});
+    }
   }
 
-  /* Whole splash is clickable — direct tap works on all mobile browsers */
-  splash.addEventListener('click', () => {
-    splash.classList.add('hidden');
-    playMusic();
-  });
+  /* Both click and touchend cover all mobile browsers */
+  splash.addEventListener('click', enterSite);
+  splash.addEventListener('touchend', (e) => { e.preventDefault(); enterSite(); });
 
   /* Toggle play / pause */
-  btn.addEventListener('click', () => {
+  btn.addEventListener('click', (e) => {
+    e.stopPropagation();
     if (audio.paused) {
       audio.play();
       btn.classList.add('playing');
