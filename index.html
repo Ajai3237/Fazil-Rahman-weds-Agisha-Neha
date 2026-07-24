@@ -1076,116 +1076,51 @@
     /* ============================
        COUNTER SECTION
     ============================ */
-    .counter-section {
-      padding: 5rem 1.5rem;
-      background: linear-gradient(160deg, var(--green-deep) 0%, var(--green-mid) 100%);
+    .banner-photo-section {
+      padding: 5.5rem 1.5rem;
+      background: var(--cream);
       position: relative;
       z-index: 2;
+    }
+
+    .banner-photo-wrap {
+      position: relative;
       overflow: hidden;
-    }
-
-    .counter-section::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='50' cy='50' r='40' fill='none' stroke='%23c8a84b' stroke-width='0.4' opacity='0.07'/%3E%3Ccircle cx='50' cy='50' r='25' fill='none' stroke='%23c8a84b' stroke-width='0.4' opacity='0.07'/%3E%3C/svg%3E");
-      background-size: 100px 100px;
-      pointer-events: none;
-    }
-
-    .counter-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 0;
-      max-width: 900px;
+      border-radius: 14px;
+      box-shadow: 0 6px 30px rgba(0,0,0,0.12);
+      height: 500px;
+      max-width: 500px;
       margin: 0 auto;
-      position: relative;
-      z-index: 1;
     }
 
-    .counter-item {
-      text-align: center;
-      padding: 2.5rem 1.5rem;
-      position: relative;
+    .banner-photo-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 20%;
+      display: block;
+      transition: transform 0.65s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
 
-    .counter-item:not(:last-child)::after {
-      content: '';
+    .banner-photo-wrap:hover .banner-photo-img {
+      transform: scale(1.07);
+    }
+
+    .banner-photo-caption {
       position: absolute;
-      right: 0;
-      top: 25%;
-      bottom: 25%;
-      width: 1px;
-      background: linear-gradient(to bottom, transparent, rgba(200,168,75,0.5), transparent);
-    }
-
-    .counter-icon {
-      font-size: 1.8rem;
-      display: block;
-      margin-bottom: 0.8rem;
-    }
-
-    .counter-num-wrap {
-      display: flex;
-      align-items: baseline;
-      justify-content: center;
-      gap: 0.1em;
-      margin-bottom: 0.6rem;
-    }
-
-    .counter-num {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2.4rem, 6vw, 4rem);
-      font-weight: 700;
-      color: var(--gold);
-      line-height: 1;
-      text-shadow: 0 0 30px rgba(200,168,75,0.3);
-    }
-
-    .counter-suffix {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(1.5rem, 3.5vw, 2.5rem);
-      font-weight: 700;
+      bottom: 0; left: 0; right: 0;
+      background: linear-gradient(to top, rgba(28,8,16,0.8) 0%, transparent 100%);
+      padding: 2rem 1.2rem 1rem;
       color: var(--gold-light);
-      line-height: 1;
-    }
-
-    .counter-label {
-      font-size: 0.62rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.55);
-      font-weight: 700;
-      display: block;
-      margin-bottom: 0.3rem;
-      white-space: nowrap;
-    }
-
-    .counter-sub {
       font-family: 'Cormorant Garamond', serif;
       font-style: italic;
-      font-size: 0.88rem;
-      color: rgba(255,255,255,0.4);
-    }
-
-    @media (max-width: 700px) {
-      .counter-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-      .counter-item:last-child:nth-child(odd) {
-        grid-column: 1 / -1;
-        max-width: 200px;
-        margin: 0 auto;
-      }
-      .counter-item:nth-child(2)::after { display: none; }
-      .counter-item:nth-child(odd):not(:last-child)::after { display: block; }
-      .counter-item:nth-child(even)::after { display: none; }
+      font-size: 1rem;
+      text-align: center;
     }
 
     @media (max-width: 480px) {
-      .counter-section { padding: 3.5rem 1rem; }
-      .counter-item { padding: 2rem 1rem; }
-      .counter-num { font-size: 2.2rem; }
+      .banner-photo-section { padding: 3.5rem 1rem; }
+      .banner-photo-wrap { height: 400px; max-width: 100%; }
     }
 
     /* ============================
@@ -1435,7 +1370,7 @@
 <!-- ── Welcome Splash ── -->
 <div id="splash">
   <p class="splash-ornament">بِسْمِ اللَّهِ</p>
-  <h1 class="splash-title">Fazil Rahman<br>&amp; Agisha Neha</h1>
+  <h1 class="splash-title">Fazil Rahman<br>&amp; Ayisha Neha</h1>
   <p class="splash-sub">are getting married</p>
   <span class="splash-date">15 · August · 2026</span>
   <span class="splash-hijri">2 Rabīʿ al-Awwal 1448 AH</span>
@@ -1571,7 +1506,7 @@
   <div class="gallery-grid reveal reveal-delay-1">
   
     <div class="g-item">
-      <img src="Asset/ChatGPT Image Jul 24, 2026, 04_53_30 PM.png" alt="Fazil & Agisha — Together" />
+      <img src="Asset/ChatGPT Image Jul 24, 2026, 04_53_30 PM.png" alt="Fazil & Ayisha — Together" />
       <p class="g-caption">"Two souls, one journey, united by the decree of Allah."</p>
     </div>
   </div>
@@ -1631,7 +1566,7 @@
     <div class="couple-card">
       <div class="couple-card-top">
         <div class="couple-photo-wrap">
-          <img class="couple-photo" src="Asset/WhatsApp Image 2026-07-24 at 5.37.27 PM.jpeg" alt="Agisha Neha" />
+          <img class="couple-photo" src="Asset/WhatsApp Image 2026-07-24 at 6.06.10 PM.jpeg" alt="Ayisha Neha" />
         </div>
         <p class="couple-name">Ayisha Neha</p>
         <p class="couple-role">The Bride</p>
@@ -1680,8 +1615,8 @@
 
   <div class="gallery-grid reveal reveal-delay-1">
     <div class="g-item">
-      <img src="Asset/img2.png" alt="Fazil & Agisha — Outdoors" />
-      <p class="g-caption">Where our hearts found home</p>
+      <img src="Asset/img2.png" alt="Fazil & Ayisha — Outdoors" />
+      <p class="g-caption">Years Of Love begins Forever & Allways</p>
     </div>
    
   </div>
@@ -1690,36 +1625,10 @@
 <!-- ============================
      COUNTER / STATS
 ============================ -->
-<section class="counter-section">
-  <div class="counter-grid">
-
-    <div class="counter-item reveal">
-      
-      <div class="counter-num-wrap">
-        <span class="counter-num" data-target="1">0</span>
-      </div>
-      <span class="counter-label">Wedding Reception</span>
-      <span class="counter-sub">Sacred Union</span>
-    </div>
-
-    <div class="counter-item reveal reveal-delay-1">
-
-      <div class="counter-num-wrap">
-        <span class="counter-num" data-target="2">0</span>
-      </div>
-      <span class="counter-label">Families United</span>
-      <span class="counter-sub">Becoming One</span>
-    </div>
-
-    <div class="counter-item reveal reveal-delay-2">
-      
-      <div class="counter-num-wrap">
-        <span class="counter-num">∞</span>
-      </div>
-      <span class="counter-label">Years of Love Begins</span>
-      <span class="counter-sub">Forever & Always</span>
-    </div>
-
+<section class="banner-photo-section">
+  <div class="banner-photo-wrap reveal">
+    <img src="Asset/img1.png" alt="Fazil & Ayisha" class="banner-photo-img" />
+    <p class="banner-photo-caption">A love written in the stars, blessed by Allah</p>
   </div>
 </section>
 
