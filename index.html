@@ -1065,7 +1065,7 @@
 
     .counter-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 0;
       max-width: 900px;
       margin: 0 auto;
@@ -1140,6 +1140,11 @@
     @media (max-width: 700px) {
       .counter-grid {
         grid-template-columns: 1fr 1fr;
+      }
+      .counter-item:last-child:nth-child(odd) {
+        grid-column: 1 / -1;
+        max-width: 200px;
+        margin: 0 auto;
       }
       .counter-item:nth-child(2)::after { display: none; }
       .counter-item:nth-child(odd):not(:last-child)::after { display: block; }
