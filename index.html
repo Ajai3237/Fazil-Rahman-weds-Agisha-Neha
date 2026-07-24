@@ -713,8 +713,10 @@
     .gallery-grid {
       display: flex;
       justify-content: center;
-      max-width: 720px;
+      gap: 1rem;
+      max-width: 1000px;
       margin: 0 auto;
+      flex-wrap: wrap;
     }
 
     .g-item {
@@ -722,13 +724,14 @@
       overflow: hidden;
       border-radius: 14px;
       box-shadow: 0 6px 30px rgba(0,0,0,0.12);
-      width: 100%;
+      flex: 1;
+      min-width: 280px;
       height: 500px;
     }
 
     @media (max-width: 700px) {
       .gallery-grid {
-        grid-template-columns: 1fr;
+        flex-direction: column;
         max-width: 420px;
       }
       .g-item:nth-child(1),
@@ -1663,6 +1666,10 @@
     <div class="g-item">
       <img src="Asset/img2.png" alt="Fazil & Agisha — Outdoors" />
       <p class="g-caption">Where our hearts found home</p>
+    </div>
+    <div class="g-item">
+      <img src="Asset/WhatsApp Image 2026-07-24 at 4.08.46 PM.jpeg" alt="Fazil & Agisha — Together" />
+      <p class="g-caption">Two souls, one journey</p>
     </div>
   </div>
 </section>
