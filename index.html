@@ -1312,6 +1312,7 @@
       justify-content: center;
       text-align: center;
       padding: 2rem;
+      cursor: pointer;
       transition: opacity 0.8s ease, visibility 0.8s ease;
     }
     #splash.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
@@ -1408,8 +1409,8 @@
   <h1 class="splash-title">Fazil Rahman<br>&amp; Agisha Neha</h1>
   <p class="splash-sub">are getting married</p>
   <span class="splash-date">15 · August · 2026</span>
-  <button id="splash-enter">Enter &nbsp; ♫</button>
-  <p class="splash-note">Tap to open with music</p>
+  <button id="splash-enter">Tap to Enter</button>
+  <p class="splash-note">Tap anywhere to open with music</p>
 </div>
 
 <!-- Floating petals canvas -->
@@ -1939,8 +1940,8 @@
     }).catch(() => {});
   }
 
-  /* Splash enter button — direct tap gesture, works on all mobile browsers */
-  enterBtn.addEventListener('click', () => {
+  /* Whole splash is clickable — direct tap works on all mobile browsers */
+  splash.addEventListener('click', () => {
     splash.classList.add('hidden');
     playMusic();
   });
