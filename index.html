@@ -312,7 +312,7 @@
     ============================ */
     .countdown-section {
       background: linear-gradient(160deg, var(--green-deep) 0%, #2a0d1a 40%, var(--green-dark) 100%);
-      padding: 5rem 1.5rem;
+      padding: 3rem 1.5rem;
       position: relative;
       overflow: hidden;
       z-index: 2;
@@ -364,20 +364,20 @@
     .countdown-eyebrow {
       font-family: 'Cormorant Garamond', serif;
       font-style: italic;
-      font-size: clamp(1.4rem, 3.5vw, 2rem);
+      font-size: clamp(1.1rem, 2.5vw, 1.5rem);
       color: var(--gold-light);
       letter-spacing: 0.06em;
-      margin-bottom: 0.6rem;
+      margin-bottom: 0.4rem;
       line-height: 1.3;
     }
 
     .countdown-date-line {
       font-family: 'Lato', sans-serif;
-      font-size: 0.75rem;
-      letter-spacing: 0.22em;
+      font-size: 0.68rem;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
       color: rgba(255,255,255,0.35);
-      margin-bottom: 3rem;
+      margin-bottom: 1.6rem;
     }
 
     .countdown-grid {
@@ -393,11 +393,11 @@
       text-align: center;
       background: rgba(255,255,255,0.04);
       border: 1px solid rgba(200,168,75,0.22);
-      border-radius: 1rem;
-      padding: 1.6rem 0;
-      min-width: clamp(72px, 16vw, 130px);
+      border-radius: 0.8rem;
+      padding: 1rem 0;
+      min-width: clamp(60px, 14vw, 100px);
       flex: 1;
-      max-width: 130px;
+      max-width: 100px;
       backdrop-filter: blur(6px);
       box-shadow: 0 8px 32px rgba(0,0,0,0.25), inset 0 1px 0 rgba(200,168,75,0.1);
       overflow: hidden;
@@ -423,7 +423,7 @@
 
     .cd-item .num {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(2.4rem, 8vw, 4rem);
+      font-size: clamp(1.6rem, 5vw, 2.4rem);
       font-weight: 700;
       color: var(--gold);
       display: block;
@@ -1202,19 +1202,23 @@
       .hero-venue-tag { font-size: 0.75rem; letter-spacing: 0.1em; }
       .scroll-cue { bottom: 1.5rem; }
 
-      /* Countdown: 2×2 grid, hide colons */
+      /* Countdown: single row */
       .cd-sep { display: none; }
       .countdown-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 0.8rem;
-        max-width: 320px;
+        display: flex;
+        flex-wrap: nowrap;
+        gap: 0.6rem;
+        justify-content: center;
+        max-width: 360px;
         margin: 0 auto;
       }
-      .cd-item { min-width: unset; max-width: unset; padding: 1.2rem 0; }
-      .countdown-section { padding: 3rem 1.2rem; }
-      .countdown-eyebrow { font-size: 1.1rem; margin-bottom: 0.5rem; }
-      .countdown-date-line { font-size: 0.65rem; margin-bottom: 2rem; }
+      .cd-item { min-width: 0; max-width: 80px; flex: 1; padding: 0.8rem 0; }
+      .cd-item .num { font-size: 1.4rem; }
+      .cd-item .lbl { font-size: 0.5rem; letter-spacing: 0.15em; }
+      .cd-item .cd-divider { margin: 0.3rem auto 0.3rem; }
+      .countdown-section { padding: 2.5rem 1rem; }
+      .countdown-eyebrow { font-size: 1rem; margin-bottom: 0.3rem; }
+      .countdown-date-line { font-size: 0.6rem; margin-bottom: 1.2rem; }
 
       /* Verse */
       .verse-section { padding: 3.5rem 1.2rem; }
