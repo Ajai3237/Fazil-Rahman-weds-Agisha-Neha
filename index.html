@@ -1300,6 +1300,77 @@
     }
 
     /* ── Music Toggle Button ── */
+    /* ── Welcome Splash ── */
+    #splash {
+      position: fixed;
+      inset: 0;
+      z-index: 99999;
+      background: linear-gradient(160deg, #1c0810 0%, #3d1020 55%, #1c0810 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      transition: opacity 0.8s ease, visibility 0.8s ease;
+    }
+    #splash.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+    .splash-ornament {
+      color: var(--gold);
+      font-size: 1.4rem;
+      letter-spacing: 0.3em;
+      margin-bottom: 1.2rem;
+      opacity: 0.7;
+    }
+    .splash-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 6vw, 3rem);
+      color: var(--gold-light);
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 0.4rem;
+    }
+    .splash-sub {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: clamp(1rem, 3vw, 1.3rem);
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 2.5rem;
+    }
+    .splash-date {
+      font-family: 'Lato', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid rgba(200,168,75,0.3);
+      padding: 0.3rem 1.2rem;
+      border-radius: 2rem;
+      margin-bottom: 2.8rem;
+    }
+    #splash-enter {
+      font-family: 'Lato', sans-serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--green-deep);
+      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+      border: none;
+      padding: 0.9rem 2.8rem;
+      border-radius: 3rem;
+      cursor: pointer;
+      font-weight: 700;
+      box-shadow: 0 4px 24px rgba(200,168,75,0.35);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    #splash-enter:active { transform: scale(0.96); }
+    .splash-note {
+      margin-top: 1.2rem;
+      font-size: 0.68rem;
+      color: rgba(255,255,255,0.25);
+      letter-spacing: 0.1em;
+    }
+
     #music-btn {
       position: fixed;
       bottom: 1.6rem;
@@ -1330,6 +1401,16 @@
 </head>
 
 <body>
+
+<!-- ── Welcome Splash ── -->
+<div id="splash">
+  <p class="splash-ornament">✦ &nbsp; بِسْمِ اللَّهِ &nbsp; ✦</p>
+  <h1 class="splash-title">Fazil Rahman<br>&amp; Agisha Neha</h1>
+  <p class="splash-sub">are getting married</p>
+  <span class="splash-date">15 · August · 2026</span>
+  <button id="splash-enter">Enter &nbsp; ♫</button>
+  <p class="splash-note">Tap to open with music</p>
+</div>
 
 <!-- Floating petals canvas -->
 <canvas id="petals-canvas"></canvas>
@@ -1844,29 +1925,28 @@
 <button id="music-btn" title="Toggle Music">♫</button>
 
 <script>
-  const audio = document.getElementById('bg-music');
-  const btn   = document.getElementById('music-btn');
-  let started = false;
+  const audio  = document.getElementById('bg-music');
+  const btn    = document.getElementById('music-btn');
+  const splash = document.getElementById('splash');
+  const enterBtn = document.getElementById('splash-enter');
 
-  function startMusic() {
-    if (started) return;
-    started = true;
-    audio.volume = 0.5;
+  audio.volume = 0.5;
+
+  function playMusic() {
     audio.play().then(() => {
       btn.classList.add('playing');
       btn.textContent = '♫';
     }).catch(() => {});
   }
 
-  /* Auto-start on first user interaction */
-  document.addEventListener('click', startMusic, { once: true });
-  document.addEventListener('touchstart', startMusic, { once: true });
-  document.addEventListener('scroll', startMusic, { once: true });
+  /* Splash enter button — direct tap gesture, works on all mobile browsers */
+  enterBtn.addEventListener('click', () => {
+    splash.classList.add('hidden');
+    playMusic();
+  });
 
   /* Toggle play / pause */
-  btn.addEventListener('click', (e) => {
-    e.stopPropagation();
-    if (!started) { startMusic(); return; }
+  btn.addEventListener('click', () => {
     if (audio.paused) {
       audio.play();
       btn.classList.add('playing');
